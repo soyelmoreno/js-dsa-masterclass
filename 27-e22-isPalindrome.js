@@ -14,10 +14,11 @@ returns false.
 */
 
 function isPalindrome(str) {
-  if (str.length <= 1) return true;
-  if (str.length == 2 && str[0] == str[str.length - 1]) return true;
-  if (str[0] != str[str.length - 1]) return false;
-  return isPalindrome(str.substring(1, str.length - 1));
+  const len = str.length;
+  if (len <= 1) return true;
+  if (len === 2 && str[0] === str[1]) return true;
+  if (str[0] !== str[len - 1]) return false;
+  return isPalindrome(str.substring(1, len - 1));
 }
 
 isPalindrome(""); // true
