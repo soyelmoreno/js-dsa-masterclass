@@ -26,7 +26,7 @@ class SinglyLinkedList {
     // if (this.length === 0) {
     if (!this.head) {
       this.head = newNode;
-      this.tail = this.head;
+      this.tail = newNode;
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
