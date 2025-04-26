@@ -67,88 +67,88 @@ class BinarySearchTree {
     }
   }
 
-  // // For commented version see 57-e66-bstRemove.js
+  // For commented version see 57-e66-bstRemove.js
 
-  // remove(target) {
-  //   let current = this.root;
-  //   let parent = null;
+  remove(target) {
+    let current = this.root;
+    let parent = null;
 
-  //   while (current !== null && target !== current.value) {
-  //     parent = current;
-  //     if (target < current.value) {
-  //       current = current.left;
-  //     } else {
-  //       current = current.right;
-  //     }
-  //   }
+    while (current !== null && target !== current.value) {
+      parent = current;
+      if (target < current.value) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
 
-  //   if (current === null) {
-  //     return undefined;
-  //   }
+    if (current === null) {
+      return undefined;
+    }
 
-  //   if (current.left === null && current.right === null) {
-  //     if (current === parent.left) {
-  //       parent.left = null;
-  //     } else {
-  //       parent.right = null;
-  //     }
-  //   } else if (current.right === null) {
-  //     if (parent === null) {
-  //       this.root = current.left;
-  //     } else if (current === parent.left) {
-  //       parent.left = current.left;
-  //     } else {
-  //       parent.right = current.left;
-  //     }
-  //   } else if (current.left === null) {
-  //     if (parent === null) {
-  //       this.root = current.right;
-  //     } else if (current === parent.left) {
-  //       parent.left = current.right;
-  //     } else {
-  //       parent.right = current.right;
-  //     }
-  //   } else if (current.left && current.right) {
-  //     const [successor, successorParent] = this.findSuccessor(current);
+    if (current.left === null && current.right === null) {
+      if (current === parent.left) {
+        parent.left = null;
+      } else {
+        parent.right = null;
+      }
+    } else if (current.right === null) {
+      if (parent === null) {
+        this.root = current.left;
+      } else if (current === parent.left) {
+        parent.left = current.left;
+      } else {
+        parent.right = current.left;
+      }
+    } else if (current.left === null) {
+      if (parent === null) {
+        this.root = current.right;
+      } else if (current === parent.left) {
+        parent.left = current.right;
+      } else {
+        parent.right = current.right;
+      }
+    } else if (current.left && current.right) {
+      const [successor, successorParent] = this.findSuccessor(current);
 
-  //     if (current.right.left === null) {
-  //       if (parent === null) {
-  //         this.root = successor;
-  //       } else if (current === parent.left) {
-  //         parent.left = successor;
-  //       } else {
-  //         parent.right = successor;
-  //       }
-  //       successor.left = current.left;
-  //     } else {
-  //       if (parent === null) {
-  //         this.root = successor;
-  //       } else if (current === parent.left) {
-  //         parent.left = successor;
-  //       } else {
-  //         parent.right = successor;
-  //       }
-  //       successor.left = current.left;
-  //       successorParent.left = successor.right;
-  //       successor.right = current.right;
-  //     }
-  //   }
-  //   return this;
-  // }
+      if (current.right.left === null) {
+        if (parent === null) {
+          this.root = successor;
+        } else if (current === parent.left) {
+          parent.left = successor;
+        } else {
+          parent.right = successor;
+        }
+        successor.left = current.left;
+      } else {
+        if (parent === null) {
+          this.root = successor;
+        } else if (current === parent.left) {
+          parent.left = successor;
+        } else {
+          parent.right = successor;
+        }
+        successor.left = current.left;
+        successorParent.left = successor.right;
+        successor.right = current.right;
+      }
+    }
+    return this;
+  }
 
   // Method to find the in-order successor of a node to be deleted. Copied from
   // bstRemove.js
-  // findSuccessor(node) {
-  //   let successor = node;
-  //   let successorParent = node;
-  //   let current = node.right;
-  //   while (current) {
-  //     successorParent = successor;
-  //     successor = current;
-  //     current = current.left;
-  //   }
-  //   return [successor, successorParent];
-  // }
+  findSuccessor(node) {
+    let successor = node;
+    let successorParent = node;
+    let current = node.right;
+    while (current) {
+      successorParent = successor;
+      successor = current;
+      current = current.left;
+    }
+    return [successor, successorParent];
+  }
 
   // Helper function to populate tree from an array. Copied from bstRemove.js
   insertArr(arr) {
@@ -157,20 +157,20 @@ class BinarySearchTree {
   }
 
   // Helper function to find the node with a target value. Copied from bstRemove.js
-  // find(target) {
-  //   if (this.root === null) return undefined;
-  //   let current = this.root;
-  //   while (current) {
-  //     if (target === current.value) return current;
-  //     if (target < current.value) {
-  //       if (current.left === null) return undefined;
-  //       current = current.left;
-  //     } else {
-  //       if (current.right === null) return undefined;
-  //       current = current.right;
-  //     }
-  //   }
-  // }
+  find(target) {
+    if (this.root === null) return undefined;
+    let current = this.root;
+    while (current) {
+      if (target === current.value) return current;
+      if (target < current.value) {
+        if (current.left === null) return undefined;
+        current = current.left;
+      } else {
+        if (current.right === null) return undefined;
+        current = current.right;
+      }
+    }
+  }
 
   // Exercise 69.
   bfs() {
