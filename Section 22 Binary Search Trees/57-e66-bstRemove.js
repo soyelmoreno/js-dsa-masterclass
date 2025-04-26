@@ -56,7 +56,7 @@ class BinarySearchTree {
   }
 
   insertArr(arr) {
-    arr.forEach((val) => tree.insert(val));
+    arr.forEach((val) => this.insert(val));
     return this;
   }
 

@@ -68,6 +68,7 @@ class BinarySearchTree {
   }
 
   // // For commented version see 57-e66-bstRemove.js
+
   // remove(target) {
   //   let current = this.root;
   //   let parent = null;
@@ -151,7 +152,7 @@ class BinarySearchTree {
 
   // Helper function to populate tree from an array. Copied from bstRemove.js
   insertArr(arr) {
-    arr.forEach((val) => tree.insert(val));
+    arr.forEach((val) => this.insert(val));
     return this;
   }
 
