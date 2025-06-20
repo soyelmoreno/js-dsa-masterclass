@@ -155,7 +155,7 @@ class BinarySearchTree {
     return this;
   }
 
-  // Helper function to find the node with a target value. Copied from bstRemove.js
+  // Helper function to find the node with a target value. Copied from BinarySearchTree.js
   find(target) {
     if (this.root === null) return undefined;
     let current = this.root;
@@ -179,7 +179,9 @@ class BinarySearchTree {
     let first;
     while (q.length > 0) {
       first = q.shift();
+      // Do work on the node
       visited.push(first.value);
+      // Push child nodes to queue for next time
       if (first.left) q.push(first.left);
       if (first.right) q.push(first.right);
     }
@@ -189,6 +191,7 @@ class BinarySearchTree {
   // Exercise 70.
   dfsPreOrder() {
     function traverse(node) {
+      // Do work on the node
       visited.push(node.value);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);

@@ -27,7 +27,9 @@ class BinarySearchTree {
 
     let current = this.root;
     while (true) {
+      // Edge case: the value is already in there
       if (value === current.value) return undefined;
+
       if (value < current.value) {
         if (current.left === null) {
           current.left = newNode;
@@ -46,7 +48,9 @@ class BinarySearchTree {
 
   // Exercise 65.
   find(target) {
+    // Edge case: for empty tree return undefined
     if (this.root === null) return undefined;
+
     let current = this.root;
     while (current) {
       if (target === current.value) return current;

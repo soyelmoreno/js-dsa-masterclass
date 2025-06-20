@@ -65,9 +65,14 @@ class Graph {
     const adjacencyList = this.adjacencyList;
 
     function dfs(vertex) {
+      // Why do we need this edge case? When will vertex ever be null?
       if (!vertex) return null;
+
+      // Mark the vertex as visited
       visited[vertex] = true;
+      // Do work on the vertex
       result.push(vertex);
+      // Examine neighbors that you haven't visited
       adjacencyList[vertex].forEach((neighbor) => {
         if (!visited[neighbor]) {
           return dfs(neighbor);
@@ -79,19 +84,23 @@ class Graph {
   }
 
   depthFirstIterative(start) {
-    const visited = {};
     const result = [];
-    let s = [];
+    const visited = {};
+    let stack = [];
     let current;
 
-    s.push(start);
-    while (s.length > 0) {
-      current = s.pop();
+    stack.push(start);
+    while (stack.length > 0) {
+      current = stack.pop();
+      // If we haven't already visited this vertex
       if (!visited[current]) {
-        result.push(current);
+        // Mark it as visited
         visited[current] = true;
+        // Do work on the vertex
+        result.push(current);
+        // Store neighbors for next time
         this.adjacencyList[current].forEach((neighbor) => {
-          s.push(neighbor);
+          stack.push(neighbor);
         });
       }
     }
@@ -100,19 +109,23 @@ class Graph {
 
   // Exercise 78
   breadthFirst(start) {
-    const visited = {};
     const result = [];
-    let q = [];
+    const visited = {};
+    let queue = [];
     let current;
 
-    q.push(start);
-    while (q.length > 0) {
-      current = q.shift();
+    queue.push(start);
+    while (queue.length > 0) {
+      current = queue.shift();
+      // If we haven't already visited
       if (!visited[current]) {
-        result.push(current);
+        // Mark vertex as visited
         visited[current] = true;
+        // Do work on the vertex
+        result.push(current);
+        // Enqueue the neighbors
         this.adjacencyList[current].forEach((neighbor) => {
-          q.push(neighbor);
+          queue.push(neighbor);
         });
       }
     }
