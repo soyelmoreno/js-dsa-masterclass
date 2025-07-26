@@ -15,7 +15,9 @@ class Graph {
 
   // Exercise 73.
   addVertex(vertex) {
-    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) {
+      this.adjacencyList[vertex] = [];
+    }
   }
 
   // Exercise 74.
